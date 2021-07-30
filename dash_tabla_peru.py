@@ -97,19 +97,22 @@ app.layout = html.Div(children=[
 
         #Display a partir de dropdown
         html.Div([
-            #html.H4(children='Tablas de p'),
-            html.Div(id='tabla-jurados',
-                     style={'width':'50%','display': 'inline-block'}),
-            html.Div([html.Table(
-                # Header
-                [html.Tr([html.Th(col) for col in tabla_final.columns])] +
-
-                # Body
-                [html.Tr([
-                    html.Td(tabla_final.iloc[i][col]) for col in tabla_final.columns
-                ]) for i in range(min(len(tabla_final), max_rows))]
-
-            )],style={'width':'50%','display': 'inline-block'})
+            html.Div([
+                html.H4(children='|       |    Tabla personal    |       |',
+                        style={'color':'#d10000'}),
+                html.Div(id='tabla-jurados')],
+                style={'width':'20%','display': 'inline-block'}),
+            html.Div([
+                html.H4(children='|       |    Tabla FMS Perú    |       |',
+                        style={'color':'#d10000'}),
+                html.Table(
+                    # Header
+                    [html.Tr([html.Th(col) for col in tabla_final.columns])] +
+                    # Body
+                    [html.Tr([
+                        html.Td(tabla_final.iloc[i][col]) for col in tabla_final.columns
+                    ]) for i in range(min(len(tabla_final), max_rows))])],
+                style={'width':'20%','display': 'inline-block'})
         ])
     ])
 ])
